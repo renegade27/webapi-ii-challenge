@@ -81,7 +81,7 @@ postRouter.put('/posts/:id', (req, res) => {
     }
     db.update(id, {title, contents})
     .then(response => {
-        response ? res.json({ success: `Post ${id} was edited` }) : sendUserError(404, "User not found", res);
+        response ? res.status(201).json({ success: `Post ${id} was edited` }) : sendUserError(404, "User not found", res);
         return;
     })
     .catch(error => {
